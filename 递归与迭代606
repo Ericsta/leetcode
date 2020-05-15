@@ -7,6 +7,7 @@
 
 
 
+#递归通过不断调用自己将大问题转换成小问题解决
 class Solution:
     def tree2str(self, t: TreeNode) -> str:
         if t==None:
@@ -17,3 +18,5 @@ class Solution:
             return str(t.val) +"("+self.tree2str(t.left)+")"
         return str(t.val)+ "("+self.tree2str(t.left)+")("+self.tree2str(t.right)+")"
 
+#迭代
+使用大问题逐步分解的方法 从大问题出发一步一步解决。
