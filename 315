@@ -1,0 +1,21 @@
+class Solution:
+    def countSmaller(self, nums: List[int]) -> List[int]:
+        # result =[]
+        # for index,i in enumerate(nums):
+        #     count=0
+        #     for j in nums[index:]:
+        #         if j<i:
+        #             count+=1
+        #     result.append(count)
+        # return result
+
+        
+        
+        counts=[]
+        dic ={}
+        # 排序（）
+        for i in nums:
+
+# 时间复杂度为n 的遍历 使用hash表 有重复的数字 保存两次
+        for i in nums:
+
