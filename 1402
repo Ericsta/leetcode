@@ -1,0 +1,32 @@
+class Solution:
+    def maxSatisfaction(self, satisfaction: List[int]) -> int:
+        #第一步 排序 从大到小 
+
+        def bublesort(L:List[int])-> List[int]:
+            L_len = len(L)
+            for i in range(L_len):
+                for j in range(L_len-1-i):
+                    if L[j]<L[j+1]:
+                        temp = L[j]
+                        L[j]=L[j+1]
+                        L[j+1]=temp
+            return L
+        sorted_satis = bublesort(satisfaction)
+
+        #第二步 构建 当前和之前所有数字 加起的和
+        sum_satis = []
+        temp = 0
+        for i in sorted_satis:
+            sum_satis.append(i+temp)
+            temp=sum_satis[-1]
+
+        #第三步 重复以上操作 当出现负数时停止 
+        ans = 0
+        for i in sum_satis:
+            if i<0:
+                return ans
+            ans = i+ans
+        return ans
+        
+
+            
