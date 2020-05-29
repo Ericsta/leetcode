@@ -1,0 +1,35 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        def mybuildtree(preorder_start,preorder_stop,inorder_start,inorder_stop):
+            if preorder_start > preorder_stop or inorder_start>inorder_stop:
+                return 
+            #确定前序遍历根节点
+            preorder_root = preorder_start       
+            root = TreeNode(preorder[preorder_root])
+            
+            #找到根节点再 中序遍历的位置
+            inorder_root= index[preorder[preorder_root]]
+            size_left_subtree = inorder_root-inorder_start
+            #构建左子树
+            root.left =mybuildtree(preorder_start+1,preorder_start+size_left_subtree,inorder_start,inorder_root-1)
+            #构建右子树
+            root.right = mybuildtree(preorder_start+size_left_subtree+1,preorder_stop,inorder_root+1,preorder_stop)
+            return root
+        n = len(preorder)
+        index = {element:ind for ind,element in enumerate(inorder)}
+        
+        
+        return mybuildtree(0, n - 1, 0, n - 1)
+
+
+
+            
+
+
