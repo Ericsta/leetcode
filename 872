@@ -1,0 +1,22 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    
+    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
+        #以前序遍历二叉树 获得叶节点的值
+        #遍历顺序 同时遍历 还是先遍历一个再遍历另一个
+        def dfs(root:TreeNode):
+            if root:
+                if not root.left and not root.right:
+                    yield root.val
+                yield from dfs(root.left)
+                yield from dfs(root.right)
+
+        return list(dfs(root1)) == list(dfs(root2))
+
+
