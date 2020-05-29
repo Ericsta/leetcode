@@ -1,0 +1,13 @@
+class Solution:
+    def flipAndInvertImage(self, A: List[List[int]]) -> List[List[int]]:
+        h,w = len(A),len(A[0])
+        for i in A:
+            for j in range(w//2):
+                temp = i[j]
+                i[j]= 1-i[w-j-1]
+                i[w-j-1]=1-temp
+            if w==1:
+                i[0] = 1-i[0]
+            elif w%2:
+                i[w//2] = 1-i[w//2]
+        return A
