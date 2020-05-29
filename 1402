@@ -15,18 +15,23 @@ class Solution:
 
         #第二步 构建 当前和之前所有数字 加起的和
         sum_satis = []
-        temp = 0
+        temp,ans  = 0,0
         for i in sorted_satis:
-            sum_satis.append(i+temp)
-            temp=sum_satis[-1]
-
-        #第三步 重复以上操作 当出现负数时停止 
-        ans = 0
-        for i in sum_satis:
-            if i<0:
+            temp = i+temp
+            if temp<0:
                 return ans
-            ans = i+ans
+            ans  = ans +temp
         return ans
+        #     sum_satis.append(i+temp)
+        #     temp=sum_satis[-1]
+
+        # #第三步 重复以上操作 当出现负数时停止 
+        # ans = 0
+        # for i in sum_satis:
+        #     if i<0:
+        #         return ans
+        #     ans = i+ans
+        # return ans
         
 
             
