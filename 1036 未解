@@ -1,0 +1,8 @@
+class Solution:
+    def isEscapePossible(self, blocked: List[List[int]], source: List[int], target: List[int]) -> bool:
+        #判断 block 数组是否将 网格一分为二同时 开始点与结束点 分别在网格两侧
+        #block 是否排序过
+
+        #对block 进行 BFS 检测 闭环
+        #检测 block 是否形成闭环 不形成 返回true 
+        #形成闭环的情况下 是否有任一闭环 包围源点 不包围 返回True
