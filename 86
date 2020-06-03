@@ -1,0 +1,24 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def partition(self, head: ListNode, x: int) -> ListNode:
+        #找到链表中第一个大于x的结点 把所有 小于x的结点依次放入 这个节点之前
+
+        low_list =low_head_list= ListNode(0)
+        high_list=high_head_list = ListNode(0)
+        while head:
+            if head.val<x:
+                low_list.next=head
+                low_list=low_list.next
+            else:
+                high_list.next=head
+                high_list=high_list.next
+            head=head.next
+
+        high_list.next = None
+        low_list.next = high_head_list.next
+        return low_head_list.next
