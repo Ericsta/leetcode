@@ -1,0 +1,13 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        ans = []
+        row_ans = []
+        for row in range(numRows):       
+            for col in range(row+1):
+                if col == 0 or row == col:
+                    row_ans.append(1)
+                else:
+                    row_ans.append(ans[row-1][col-1]+ans[row-1][col])
+            ans.append(row_ans)
+            row_ans=[]    
+        return ans
