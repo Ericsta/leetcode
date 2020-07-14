@@ -1,0 +1,22 @@
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        if len(nums2)<len(nums1):
+            return self.intersect(nums2,nums1)
+        
+        char_dict = dict()
+        ans= []
+
+        for i in nums1:
+            if i not in char_dict:
+                char_dict[i]=1
+            else:
+                char_dict[i]+=1
+
+        for i in nums2:
+            if i in char_dict and char_dict[i]>0:
+                char_dict[i]-=1
+                ans.append(i)
+        return ans
+
+
+
