@@ -2,7 +2,7 @@ class Solution:
     def minSubsequence(self, nums: List[int]) -> List[int]:
         # 求和 n 
         # 排序 nlogif
-        sum=sum(nums)
+        sum_a=sum(nums)
         # for i in nums:
         #     sum+=i
         a = sorted(nums,reverse=True)
@@ -11,5 +11,5 @@ class Solution:
         for i in a:
             result+=i
             ans.append(i)
-            if result>(sum/2):
+            if result>(sum_a/2):
                 return ans
