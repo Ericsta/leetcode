@@ -1,0 +1,18 @@
+class Solution:
+    def countDigitOne(self, n: int) -> int:
+        digit,ans = 1,0
+        high,cur,low = n//10, n%10, 0
+        while high!=0  or cur!=0:
+            if cur == 0: ans += high*digit
+            elif cur == 1: ans += high*digit +low +1
+            else : ans+= (high+1)*digit
+            low += cur * digit
+            cur = high%10
+            high //=10
+            digit *=10
+        return ans
+
+#分三种情况 cur 为 0， 1 和 其他
+# 0 时 high * digit
+# 1 时 high * digit + low +1
+# 其他 时 (high+1) * digit
